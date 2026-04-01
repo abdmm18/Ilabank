@@ -115,23 +115,6 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
 
-        .password-toggle-btn {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 20px;
-            transition: color 0.3s ease;
-        }
-
-        .password-toggle-btn:hover {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
         .submit-btn {
             width: 100%;
             padding: 16px;
@@ -364,7 +347,6 @@
                             placeholder="أدخل كلمة المرور"
                             required
                         >
-                        <button type="button" class="password-toggle-btn" onclick="togglePassword()">🔊</button>
                     </div>
                 </div>
 
@@ -465,15 +447,6 @@
                 loading.style.display = 'none';
             }
         });
-
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-            } else {
-                passwordInput.type = 'password';
-            }
-        }
 
         function startCountdown() {
             let timeLeft = 10;
